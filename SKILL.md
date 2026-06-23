@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+description: Use when designing or building any frontend, landing page, portfolio, marketing site, or redesign, or when UI looks templated, generic, or AI-generated and needs a distinctive visual identity. Covers aesthetic direction, typography, color, layout, motion, removing AI-slop tells (em-dash ban, eyebrow restraint, the consistency locks), choosing a real design system when the brief is one, the redesign protocol, and a mechanical pre-flight check before shipping. Reach for it on "make this look less AI", "design a landing page", "the hero feels generic", "redesign this", or any deliberate visual-design decision.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -10,7 +10,11 @@ Approach this as the design lead at a small studio known for giving every client
 
 ## Ground it in the subject
 
-If the brief does not pin down what the product or subject is, pin it yourself before designing: name one concrete subject, its audience, and the page's single job, and state your choice. If there's any information in your memory about the human's preferences, context about what they're building, or designs you've made before – use that as a hint. The subject's own world, its materials, instruments, artifacts, and vernacular, is where distinctive choices come from. Build with the brief's real content and subject matter throughout.
+If the brief does not pin down what the product or subject is, pin it yourself before designing: name one concrete subject, its audience, and the page's single job, and state your choice. State this read in one line before you generate anything, so the rest of the work has a fixed point to converge toward. If there's any information in your memory about the human's preferences, context about what they're building, or designs you've made before – use that as a hint. The subject's own world, its materials, instruments, artifacts, and vernacular, is where distinctive choices come from. Build with the brief's real content and subject matter throughout.
+
+## Use the real thing when the brief is a system, not an aesthetic
+
+Some briefs are not a look to invent, they are a system to adopt: a Microsoft or enterprise app, a GitHub-style devtool, a UK or US public-sector service, a Shopify app surface, an Atlassian-style product. When the brief is clearly one of these, install and use the official package (Fluent, Carbon, Primer, GOV.UK Frontend, USWDS, Polaris, or shadcn/ui when you want to own the code) instead of hand-rolling its appearance. Don't import a system's tokens and then override most of them, and don't mix two systems in one tree. `references/design-systems.md` maps brief to system with install commands. Everything below is for when the brief is an aesthetic rather than a system.
 
 ## Design principles
 
@@ -42,6 +46,8 @@ Try to do a lot of this planning and iteration in your thinking, and only show i
 
 Spend your boldness in one place. Let the signature element be the one memorable thing, keep everything around it quiet and disciplined, and cut any decoration that does not serve the brief. Not taking a risk can be a risk itself! Build to a quality floor without announcing it: responsive down to mobile, visible keyboard focus, reduced motion respected. Critique your own work as you build, taking screenshots if your environment supports it – a picture is worth 1000 tokens. Consider Chanel's advice: before leaving the house, take a look in the mirror and remove one accessory. Human creators have memory and always try to do something new, so if you have a space to quickly jot down notes about what you've tried, it can help you in future passes.
 
+Three consistency locks are non-negotiable: one accent color, one corner-radius system, one theme, each held across the whole page. And the single highest-frequency tell to purge from shipped copy is the em-dash; there is no sparing use of it. `references/anti-slop.md` carries the full catalogue of production tells, the locks, and hero discipline. Before you call a page done, run `references/pre-flight.md` as a real pass over the rendered result, in both light and dark.
+
 ## More on writing in design
 
 Words appear in a design for one reason: to make it easier to understand, and therefore easier to use. They are design material, not decoration. Bring the same intentionality to copy that you would bring to spacing and color. Before writing anything, ask what the design needs to say, and how it can best be said to help the person navigate the experience.
@@ -58,9 +64,12 @@ Keep the register conversational and tuned: plain verbs, sentence case, no fille
 
 The judgment above is the skill. These are the concrete details — pull one in only when you reach that part of the work, not all up front:
 
-- `references/design-vocabulary.md` — named directions to choose between during the brainstorm pass, plus the per-discipline lens for fixing slop one axis at a time.
-- `references/anti-slop.md` — the component-level "AI made this" tells, and restraint made measurable (color/type budgets, the remove test, the convergence check).
+- `references/design-vocabulary.md` — named directions to choose between during the brainstorm pass, the three intensity dials (variance / motion / density), the pattern vocabulary (hero, nav, layout, scroll, type, micro-interaction names), and the per-discipline lens for fixing slop one axis at a time.
+- `references/anti-slop.md` — the reflexes and the specific production tells (em-dash ban, eyebrow restraint, decorative dots, fake screenshots, …), the three consistency locks, hero discipline, and restraint made measurable (color/type budgets, the remove test, the convergence check).
+- `references/design-systems.md` — when the brief is a known system (Fluent / Carbon / Primer / GOV.UK / Polaris / shadcn), the honesty rules, the brief→system map, install commands, and canonical sources.
 - `references/tokens.md` — turning the design plan into a primitive → semantic → component token system, dark mode, and the selector-specificity bug to avoid.
 - `references/typography.md` — scale ratios, measure, OpenType settings, correct glyphs, and the JSX quote gotcha.
-- `references/motion.md` — easing curves, durations by weight, orchestration, and reduced-motion.
+- `references/motion.md` — easing curves, durations by weight, orchestration, library choice, the forbidden React scroll patterns, the canonical GSAP scroll-hijack skeletons, and reduced-motion.
 - `references/responsive-a11y.md` — breakpoints, touch targets, WCAG AA contrast, focus, and a 60-second pre-ship audit.
+- `references/redesign.md` — the redesign protocol: detect the mode, audit first, preserve IA/SEO/voice, the modernisation levers, and what never changes silently.
+- `references/pre-flight.md` — the mechanical last-pass checklist before calling a page done, run over the rendered result in both themes.
