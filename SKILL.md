@@ -70,6 +70,6 @@ The judgment above is the skill. These are the concrete details — pull one in 
 - `references/tokens.md` — turning the design plan into a primitive → semantic → component token system, dark mode, and the selector-specificity bug to avoid.
 - `references/typography.md` — scale ratios, measure, OpenType settings, correct glyphs, and the JSX quote gotcha.
 - `references/motion.md` — easing curves, durations by weight, orchestration, library choice, the forbidden React scroll patterns, the canonical GSAP scroll-hijack skeletons, and reduced-motion.
-- `references/responsive-a11y.md` — breakpoints, touch targets, WCAG AA contrast, focus, and a 60-second pre-ship audit.
+- `references/responsive-a11y.md` — breakpoints, the orchestrator + desktop/mobile + skeleton component structure, touch targets, WCAG AA contrast, focus, and a 60-second pre-ship audit.
 - `references/redesign.md` — the redesign protocol: detect the mode, audit first, preserve IA/SEO/voice, the modernisation levers, and what never changes silently.
 - `references/pre-flight.md` — the mechanical last-pass checklist before calling a page done, run over the rendered result in both themes.

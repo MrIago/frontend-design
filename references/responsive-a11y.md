@@ -13,6 +13,48 @@ reduced motion respected." These are the specifics that satisfy it.
   reflows into nonsense; long words/code blocks scroll rather than break layout.
 - **Fluid type** with `clamp()` so headings scale between breakpoints (see
   `typography.md`).
+- **Mobile and desktop get different layouts, not one scaled.** A data table is a
+  table on desktop and a stack of cards on mobile; a horizontal timeline becomes
+  a vertical list. Switch with `hidden md:block` / `md:hidden`, not with a single
+  layout that squeezes.
+
+## Component structure for responsiveness (orchestrator + viewport layouts + skeleton)
+
+When a screen's mobile and desktop forms genuinely differ, give it four parts so
+each stays single-purpose, instead of one component branching on width inline:
+
+- **`XContent` — the orchestrator.** Owns the data (its own fetch/hook, never
+  prop-drilled), and decides what to render: the skeleton while loading, an empty
+  state when there's nothing, an error path, and otherwise the layout. It holds no
+  layout markup of its own beyond mounting `<XDesktop>` and `<XMobile>`.
+- **`XDesktop`** (`hidden md:block` / `md:flex`) — the desktop layout.
+- **`XMobile`** (`md:hidden`) — the genuinely different mobile layout (cards,
+  stacked, bottom-sheet), not the desktop one shrunk.
+- **`XSkeleton`** — the loading shell in the *shape* of the content, rendered by
+  the orchestrator. It mirrors both forms (a desktop-shaped skeleton in the
+  `md:block` branch, a mobile-shaped one in the `md:hidden` branch), so the page
+  never flashes blank or drops a spinner where a view belongs.
+
+```tsx
+export function XContent() {
+  const { data, isLoading } = useGetX();           // orchestrator owns the data
+  if (isLoading || !data) return <XSkeleton />;    // loading → shaped skeleton
+  if (data.items.length === 0) return <XEmpty />;  // empty → invitation to act
+  return (
+    <>
+      <XDesktop data={data} className="hidden md:block" />
+      <XMobile  data={data} className="md:hidden" />
+    </>
+  );
+}
+```
+
+Split only where the two layouts truly diverge. When plain responsive utilities
+already do the job (a grid that reflows `grid-cols-1 md:grid-cols-3`, a header
+that wraps), keep one component and skip the split: an invented `XDesktop` /
+`XMobile` that render nearly the same markup is just duplication. The test is
+"would a designer draw mobile and desktop differently here?" If yes, split; if
+it's the same layout reflowing, don't.
 
 ## Accessibility (WCAG AA as the floor)
 
