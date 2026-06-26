@@ -1,5 +1,5 @@
 ---
-name: frontend-design
+name: better-frontend
 description: Use when designing or building any frontend, landing page, portfolio, marketing site, or redesign; when writing or fixing the copy on a page; when UI looks templated, generic, or AI-generated; or when prose reads like AI wrote it. Covers two axes - visual design (aesthetic direction, typography, color, layout, motion, design systems, the redesign protocol, a pre-flight check) and writing (stripping AI tells out of copy, headlines, microcopy, and standalone prose). Routes by what you are here to do, so you can call it to improve the copy, the visual style, or both. Reach for it on "make this look less AI", "design a landing page", "the hero feels generic", "redesign this", "fix this copy", "make this writing sound human", or any deliberate design or copy decision.
 license: Complete terms in LICENSE.txt
 ---
@@ -39,6 +39,31 @@ in. Do not load everything up front.
 
 When the request is vague ("make this less AI"), it usually means both axes:
 fix the copy with `copywriting.md` and the look with `anti-slop.md`.
+
+## How to run this (do not skip)
+
+For anything beyond a one-line tweak, do not work from this file alone. The
+SKILL.md body is the map; the depth that makes the difference lives in the
+references, so a substantial task that never opens them produces one shallow,
+conservative change.
+
+So, for any real page or design task:
+
+1. **Read the reference rows that match the request before proposing anything.**
+   "Improve this landing" means open `design-vocabulary.md` + `anti-slop.md` for
+   the look and `copywriting.md` + `copy-banlist.md` for the words, then read the
+   actual page or copy before diagnosing.
+2. **Default to both axes.** A bare "improve the landing" or "make this less AI"
+   covers visual and copy. Do only one axis when the user scoped it ("just the
+   copy", "only the hero layout").
+3. **Diagnose against the references first, then change.** List the concrete
+   tells you found (eyebrow on every section, em-dashes, binary contrasts,
+   filler) before editing, the way a reviewer would.
+4. **Finish with the checks.** Run `pre-flight.md` (visual) and the
+   `copywriting.md` Quick checks (copy) over the result before calling it done.
+
+One disciplined signature is right for *style direction*; it is not an excuse to
+skip the copy axis or the anti-slop pass.
 
 ## Ground it in the subject
 

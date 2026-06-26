@@ -1,6 +1,8 @@
-# frontend-design
+# better-frontend
 
-Personal skill (plain skill, not a plugin) for two things at once: distinctive,
+Personal skill (plain skill, not a plugin). Renamed from `frontend-design` to a
+unique name so it never collides with Anthropic's official `frontend-design`
+plugin, and to match the `better-*` convention. Does two things at once: distinctive,
 intentional frontend visual design, and copy that does not read like AI wrote
 it. Strips the "AI made this" look out of UI and the "AI wrote this" tells out
 of prose.
@@ -49,4 +51,4 @@ aesthetic variants, image-gen art direction, output enforcement) and the
 **Output**
 - `references/output-discipline.md` - full-output enforcement and why models truncate.
 
-Install: clone into `~/.claude/skills/frontend-design`.
+Install: clone (or symlink) into `~/.claude/skills/better-frontend`.
